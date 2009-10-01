@@ -1,0 +1,301 @@
+/*
+ * Simplified: Linkinus 2.0 Style
+ * http://benalman.com/projects/simplified-style/
+ * 
+ * Copyright (c) 2009 "Cowboy" Ben Alman
+ * Licensed under the MIT license
+ * http://benalman.com/about/license/
+ * 
+ * If you like this theme, please consider donating!
+ */
+
+body {
+  color: #fff;
+  background-color: #000;
+}
+
+html.state-history body {
+  background-color: #111;
+}
+
+/* ========================================================================== */
+/* CONTAINERS                                                                 */
+/* ========================================================================== */
+
+/* History */
+
+#history,
+#history p {
+  /* Darken slightly */
+  background: #111;
+  border-color: #111;
+}
+
+/* History content divider */
+
+#divider {
+  background: #111;
+  border-color: #444;
+}
+
+/* "Last Break" divider */
+
+#break {
+  border-color: #444;
+}
+
+/* ========================================================================== */
+/* MESSAGES                                                                   */
+/* ========================================================================== */
+
+p {
+  background: #000;
+  border-color: #000;
+}
+
+/* Links */
+
+a {
+  color: #0080FF;
+  border-color: #0080FF;
+}
+
+a:hover {
+  color: #40A0FF;
+  border-color: #40A0FF;
+}
+
+#info a {
+  color: #00e;
+  border-color: #00e;
+}
+
+#info a:hover {
+  color: #0080FF;
+  border-color: #0080FF;
+}
+
+/* Timestamp */
+
+.time {
+  color: #666;
+}
+
+/* The messages we want to de-emphasize */
+
+.system {
+  color: #555;
+}
+
+body .system .nick,
+body .mode,
+body .topic,
+body .msgKick .nick2 {
+  color: #666;
+}
+
+/* Nicknames, descriptions, etc */
+
+.incoming .nick {
+  color: #0080FF;
+}
+
+.msgMessage.outgoing .nick,
+.msgNotice.outgoing .nick,
+.msgNotice.outgoing .description {
+  color: #FF8000;
+}
+
+.msgMessage.outgoing .description,
+.msgMessage.incoming .description,
+.msgAction.incoming .description {
+  color: #fff;
+}
+
+.msgMessage.incoming .description,
+.msgAction.incoming .description {
+  color: #aaa;
+}
+
+.msgAction.outgoing .nick,
+.msgAction.outgoing .description {
+  color: #B52CF6;
+}
+
+.msgNoticeAuth .description,
+.msgNotice.incoming,
+.msgNotice.incoming .nick {
+  color: #f00;
+}
+
+#body .msgNotice.incoming {
+  background: #400;
+  border-color: #811;
+}
+
+#body .msgRaw {
+  color: #777;
+  background: #222;
+  border-color: #444;
+}
+
+#history .msgRaw {
+  background: #333;
+  border-color: #555;
+}
+
+#body .highlight {
+  background-color: #362C00 !important;
+  border-color: #988C00;
+}
+
+.highlight .description {
+  color: #ccc !important;
+}
+
+/* Colored backgrounds */
+
+/* When scrollTo() is used, display context-sensitive highlighting */
+
+#body .scrollto {
+  background: #0A2E4F;
+  border-color: #0F4677;
+}
+
+#body .highlight.scrollto {
+  border-color: #B35800;
+}
+
+#body .starred.scrollto {
+  background-color: #3F6700;
+  border-color: #69AB00;
+}
+
+/* ========================================================================== */
+/* SPOTLIGHT                                                                  */
+/* ========================================================================== */
+
+#body .msgMessage.spotlight,
+#body .msgAction.spotlight,
+#body .msgNotice.spotlight {
+  background: #0A2E4F !important;
+  border-color: #0F4677 !important;
+}
+
+.highlight.spotlight .description {
+  color: #0080FF !important;
+}
+
+/* ========================================================================== */
+/* STAR BUTTON                                                                */
+/* ========================================================================== */
+
+.star .hit {
+  border-color: #fff;
+  opacity: 0.15;
+}
+
+.star .button {
+  background: #3F6700;
+  border-color: #73BB00;
+}
+
+#body #history .star-hover,
+#body #content .star-hover {
+  background-color: #3F6700 !important;
+  border-color: #629F00 !important;
+}
+
+#body .star-hover > div * {
+  color: #7BC700 !important;
+}
+
+.star-hover > div a {
+  border-color: #7BC700 !important;
+}
+
+/* ========================================================================== */
+/* HIGHLIGHTS & STARS CONTEXT BUTTONS                                         */
+/* ========================================================================== */
+
+#body .context {
+  color: #aaa;
+  background: #444;
+  border-color: #666;
+}
+
+#body .context:hover {
+  color: #fff;
+  background: #555;
+  border-color: #777;
+}
+
+#body .starred .context:hover {
+  color: #fff;
+  background: #3F6700;
+  border-color: #629F00;
+}
+
+#body .highlight .context:hover {
+  color: #fff;
+  background: #9B4C00;
+  border-color: #B35800;
+}
+
+/* ========================================================================== */
+/* SMILEYS                                                                    */
+/* ========================================================================== */
+
+div.explode {
+  background-image: url(../../images/explode-black.png);
+}
+
+/* ========================================================================== */
+/* MODAL OVERLAY                                                              */
+/* ========================================================================== */
+
+.modal-bg {
+  background: #fff;
+  opacity: 0.25;
+}
+
+.modal-center > div > span {
+  color: #000;
+  background: #aaa;
+  border-color: #777;
+}
+
+#overlay a {
+  color: #000;
+  border-bottom-color: #000;
+}
+
+#overlay a:hover {
+  color: #333;
+  border-bottom-color: #333;
+}
+
+/* ========================================================================== */
+/* NICK COLORS                                                                */
+/* ========================================================================== */
+
+.userhost1 .nick { color: #0080ff; }
+.userhost2 .nick { color: #00DF00; }
+.userhost3 .nick { color: #ff0080; }
+.userhost4 .nick { color: #dd00ff; }
+.userhost5 .nick { color: #76E0BD; }
+.userhost6 .nick { color: #7F4FFF; }
+.userhost7 .nick { color: #8BC100; }
+.userhost8 .nick { color: #cc66ff; }
+.userhost9 .nick { color: #BB0008; }
+.userhost10 .nick { color: #6F42BC; }
+.userhost11 .nick { color: #008080; }
+.userhost12 .nick { color: #904000; }
+.userhost13 .nick { color: #808000; }
+.userhost14 .nick { color: #4ABFD1; }
+.userhost15 .nick { color: #3333dd; }
+.userhost16 .nick { color: #C19C46; }
+.userhost17 .nick { color: #0057DA; }
+.userhost18 .nick { color: #008000; }
+.userhost19 .nick { color: #608040; }
+.userhost20 .nick { color: #ff6fcf; }

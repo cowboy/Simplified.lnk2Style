@@ -1,0 +1,497 @@
+/*
+ * Simplified: Linkinus 2.0 Style
+ * http://benalman.com/projects/simplified-style/
+ * 
+ * Copyright (c) 2009 "Cowboy" Ben Alman
+ * Licensed under the MIT license
+ * http://benalman.com/about/license/
+ * 
+ * If you like this theme, please consider donating!
+ */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Grande";
+}
+
+* {
+  word-wrap: break-word;
+}
+
+/* ========================================================================== */
+/* CONTAINERS                                                                 */
+/* ========================================================================== */
+
+#body {
+  z-index: 100;
+}
+
+/* Anchor chat window text to the bottom */
+
+html.channel body,
+html.console body,
+html.query body {
+  height: 100%;
+}
+
+html.channel #body,
+html.console #body,
+html.query #body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 100%;
+}
+
+/* History */
+
+#history {
+  /* Just enough space for a 1-line info box */
+  margin-top: 1.6em;
+}
+
+/* History content divider */
+
+#divider {
+  display: none;
+  
+  position: relative;
+  z-index: 195;
+  
+  margin-top: -1px;
+  
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  height: 2px;
+}
+
+html.state-history #divider {
+  display: block;
+}
+
+/* "Last Break" divider */
+
+#break {
+  position: relative;
+  z-index: 295;
+  
+  margin-top: -1px;
+  
+  border-bottom: 1px dashed;
+  
+  -webkit-transition: 0.2s linear;
+}
+
+/* Info box (used with the data-title attribute) */
+
+#info {
+  position: fixed;
+  z-index: 400;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+html.overlay:not(.state-pin_topic) #info {
+  /* Hide info bar (and its drop shadow!) if not focused */
+  display: none !important;
+}
+
+#info .hit,
+#info .body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  
+  height: 2px;
+  top: -5px;
+}
+
+#info .hit {
+  z-index: 110;
+  /* A little extra buffer for the hit area */
+  padding-top: 15px;
+}
+
+#info .body {
+  font-size: 90%;
+  z-index: 111;
+  color: #000;
+  background: #CFD4DD;
+  border-bottom: 1px solid #8387B6;
+  opacity: 0.95;
+  padding: 2px 0.5em 3px;
+  -webkit-box-shadow: 0 1px 5px #777;
+  -webkit-transition: 0.1s top ease-out;
+}
+
+#info:not(.hover) a {
+  /* Links will still work, but won't appear clickable to avoid confusing the user */
+  color: inherit;
+  border: none;
+}
+
+html.state-pin_topic #info .hit,
+html.state-pin_topic #info .body,
+#info.show .hit,
+#info.show .body {
+  /* This plus the -webkit-transition property obviates complicated tween JavaScript */
+  top: 0 !important;
+}
+
+/* Only the channel view needs topic-display-on-hover */
+
+html:not(.channel) #info .hit {
+  padding-top: 0;
+}
+
+html:not(.channel) #info .body {
+  /* Just far enough to hide the drop shadow */
+  top: -15px;
+}
+
+/* ========================================================================== */
+/* MESSAGES                                                                   */
+/* ========================================================================== */
+
+p {
+  clear: both;
+  margin: -1px 0 0 0;
+  padding: 0.3em 8px 0.3em 0.5em;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  position: relative;
+  -webkit-transition: 0.2s linear;
+}
+
+/* Links */
+
+a {
+  border-bottom: dotted 1px;
+  text-decoration: none;
+}
+
+/* Arrows and bullets */
+
+.msgQuitReason .arrow,
+.msgQuit .arrow,
+.msgPart .arrow,
+.msgKick .arrow {
+  color: #e00;
+}
+
+.msgJoin .arrow,
+.msgNick .bullet {
+  color: #0c0;
+}
+
+.bullet {
+  font-size: 80%;
+  padding: 0 0.3em 0 0.35em;
+}
+
+.msgNick .bullet {
+  font-weight: 700;
+}
+
+/* Timestamp */
+
+.time {
+  display: inline-block;
+  text-indent: 0;
+  padding-right: 0.4em;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+/* Nicknames, descriptions, etc */
+
+.userhost .userhost {
+  cursor: pointer;
+}
+
+html.state-spotlight_hover .userhost .userhost {
+  cursor: inherit;
+}
+
+body .mode,
+body .topic,
+.nick,
+.nick2 {
+  font-weight: 700;
+}
+
+#body .msgNotice.incoming {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+/* Colored backgrounds */
+
+.msgNotice.incoming,
+.highlight {
+  z-index: 191;
+}
+
+.msgRaw {
+  z-index: 190;
+}
+
+.grouped-next .nick {
+  /* "Group consecutive messages" by hiding the nickname. Not set display: none
+     so it can still be copy & plain-text pasted */
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  display: inline-block;
+  margin-left: -1px;
+  margin-right: -0.4em;
+}
+
+
+/* Change these if you want different grouped-message indenting. */
+
+#grouped-next-test,
+.grouped-next > div,
+.grouped-next .description {
+  text-indent: -3em;
+  margin-left: 3em;
+}
+
+/* When scrollTo() is used, display context-sensitive highlighting */
+
+#body .scrollto {
+  z-index: 200;
+}
+
+/* ========================================================================== */
+/* ENCRYPTION                                                                 */
+/* ========================================================================== */
+
+img.unencrypted {
+  vertical-align: middle;
+  margin-top: -4px;
+  padding-right: 0.3em;
+}
+
+/* ========================================================================== */
+/* SPOTLIGHT                                                                  */
+/* ========================================================================== */
+
+#body .msgMessage.spotlight,
+#body .msgAction.spotlight,
+#body .msgNotice.spotlight {
+  z-index: 200 !important;
+}
+
+/* ========================================================================== */
+/* STAR BUTTON                                                                */
+/* ========================================================================== */
+
+.star,
+.star .hit,
+.star .button {
+  /* Remove extra linebreaks for copy & plain-text pasting */
+  display: -webkit-inline-box;
+}
+
+.star,
+.star .hit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 300;
+  
+  right: 0;
+  width: 10px;
+}
+
+.star {
+  overflow: hidden;
+  top: -1px;
+}
+
+.star .hit {
+  z-index: 302;
+  
+  left: 3px;
+  right: 0;
+  
+  cursor: pointer;
+  border-left: 1px solid;
+}
+
+.star .button {
+  position: absolute;
+  top: 2px;
+  bottom: 1px;
+  z-index: 301;
+  
+  right: -5px;
+  -webkit-transition: right 0.1s ease-out;
+  
+  width: 4px;
+  
+  border: 1px solid;
+  border-right: none;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+}
+
+.starred .star .button {
+  right: 0;
+}
+
+#body #history .star-hover,
+#body #content .star-hover {
+  z-index: 220 !important;
+}
+
+/* These views don't support starring */
+
+html.highlights .star,
+html.logviewer .star {
+  display: none !important;
+}
+
+html.highlights p,
+html.logviewer p {
+  padding-right: 0.5em !important;
+}
+
+/* ========================================================================== */
+/* HIGHLIGHTS & STARS CONTEXT BUTTONS                                         */
+/* ========================================================================== */
+
+#body .context {
+  display: none;
+  
+  float: right;
+  margin-left: 0.5em;
+  font-size: 75%;
+  padding: 1px 2px;
+  font-weight: 700;
+  border: 1px solid;
+  -webkit-border-radius: 5px;
+  cursor: pointer;
+  
+  -webkit-transition: 0.1s linear;
+}
+
+html.highlights .context,
+html.stars .context {
+  /* Only show in the Highlights & Stars view */
+  display: block !important;
+}
+
+/* ========================================================================== */
+/* SMILEYS                                                                    */
+/* ========================================================================== */
+
+img.smiley,
+span.smiley.shim {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+img.smiley {
+  cursor: pointer;
+}
+
+span.smiley {
+  /* This span (adjacent to the smiley image) is hidden but not set display: none
+    so it can still be copy & plain-text pasted */
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  display: inline-block;
+  margin-left: -1px;
+}
+
+div.explode {
+  position: absolute;
+  display: block;
+  width: 64px;
+  height: 64px;
+  z-index: 5000;
+  background: no-repeat 0 0;
+  
+  /* background: #faa !important;
+  opacity: 0.7; */
+}
+
+/* ========================================================================== */
+/* CHANNEL BORDER                                                             */
+/* ========================================================================== */
+
+html.query #channel-border,
+html.console #channel-border,
+html.channel #channel-border {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  z-index: 1010;
+  background: #777;
+}
+
+/* ========================================================================== */
+/* MODAL OVERLAY                                                              */
+/* ========================================================================== */
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.modal * {
+  cursor: wait;
+}
+
+html.state-overlay_ready .modal * {
+  cursor: pointer;
+}
+
+.modal-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+}
+
+.modal-center {
+  position: absolute;
+  z-index: 1002;
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-center > div {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.modal-center > div > span {
+  display: inline-block;
+  font-size: 10px;
+  padding: 0.3em;
+  font-weight: 700;
+  border: 1px solid;
+  -webkit-border-radius: 8px;
+}
+
+#overlay a {
+  cursor: pointer;
+}
