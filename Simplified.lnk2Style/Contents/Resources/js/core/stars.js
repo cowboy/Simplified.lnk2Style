@@ -1,12 +1,13 @@
 /*
  * Simplified: Linkinus 2.0 Style
- * http://benalman.com/projects/simplified-style/
+ * http://benalman.com/projects/simplified-style/projects/simplified-style/
  * 
- * Copyright (c) 2009 "Cowboy" Ben Alman
+ * Copyright (c) 2010 "Cowboy" Ben Alman
  * Licensed under the MIT license
  * http://benalman.com/about/license/
  * 
  * If you like this theme, please consider donating!
+ * http://benalman.com/donate
  */
 
 // ========================================================================== //

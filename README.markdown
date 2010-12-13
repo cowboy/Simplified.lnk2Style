@@ -1,7 +1,7 @@
 # Simplified: a Linkinus Style #
 [http://benalman.com/projects/simplified-style/](http://benalman.com/projects/simplified-style/)
 
-Version: 2.0, Last updated: 8/28/2009
+Version: 2.2, Last updated: 12/13/2010
 
 Simplified is a WebKit message style for the popular OS X [Linkinus](http://conceitedsoftware.com/products/linkinus) IRC application. While developed independently of the Linkinus app, great effort was spent working with the app development team to not only tailor Simplified to it, but to also enhance the app style API for Simplified and other message styles. As a result, the Simplified source is modular and well-organized, and style authors are encouraged to use Simplified as a framework for building their own styles.
 
@@ -11,11 +11,12 @@ Visit the [project page](http://benalman.com/projects/simplified-style/) for mor
 
 
 ## License ##
-Copyright (c) 2009 "Cowboy" Ben Alman  
+Copyright (c) 2010 "Cowboy" Ben Alman  
 Licensed under the MIT license  
 [http://benalman.com/about/license/](http://benalman.com/about/license/)
 
 
 ## Release History ##
 
+2.2 - (12/13/2010) Updates for Linkinus 2.2: minor app API change regression fixes, removed unnecessary 'window.' references, added 'spam()' method for chat debugging, made smooth scrolling over 9000 times faster  
 2.0 - (8/28/2009) Initial release
