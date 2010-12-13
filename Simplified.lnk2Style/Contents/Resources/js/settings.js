@@ -18,8 +18,8 @@ var SETTINGS = {
   // An optional Adium emoticon set in ~/Library/Application Support/Linkinus 2/Emoticons/
   emoticon_set: 'Linkinus.AdiumEmoticonset',
   
-  // Disable if you don't like smooth scrolling.
-  smooth_scrolling: true,
+  // Smaller is faster, bigger is slower. Set to false if you don't like smooth scrolling.
+  smooth_scrolling: 400,
   
   // Enable if you want the topic bar to be always visible.
   pin_topic: false,

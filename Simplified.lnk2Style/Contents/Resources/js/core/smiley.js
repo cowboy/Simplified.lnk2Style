@@ -20,7 +20,7 @@ window.smiley = (function(){
   // Enable or disable.
   
   self.enable = function( state ) {
-    enabled = state === false ? false : true;
+    enabled = !!state;
   };
   
   // Get enabled status.

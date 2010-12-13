@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>Linkinus2 Style</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.conceitedsoftware.Linkinus2Style</string>
+	<string>net.conceited.Linkinus.Simplified</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -17,10 +17,10 @@
 	<key>CFBundleSignature</key>
 	<string>cnct</string>
 	<key>CFBundleVersion</key>
-	<string>22008</string>
+	<string>22113</string>
 	<key>CFBundleDisplayName</key>
 	<string>Simplified</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
+	<string>2.2</string>
 </dict>
 </plist>

@@ -21,7 +21,7 @@ window.spotlight = (function(){
   // Enable or disable.
   
   self.enableHover = function( state ) {
-    hover = state === false ? false : true;
+    hover = !!state;
     $.$('html')[ state ? 'addClass' : 'removeClass' ]( 'state-spotlight_hover' );
   };
   

@@ -18,7 +18,7 @@ $(function(){
   // Focus the channel on window click.
   
   $.$(window,'window').click(function(){
-    window.linkinus && window.linkinus.focus();
+    window.linkinus && linkinus.focus();
   });
   
 });
@@ -56,6 +56,9 @@ function setFontSize( size ) {
 function setReady() {
   scroller.setReady();
   overlay.setReady();
+  
+  // Hacky-hacky for Linkinus 2.2 / iOS.
+  location.href = 'linkinus-style://styleDidFinishLoading';
 }
 
 // Update the topic. (Not in the app - yet?).
@@ -83,7 +86,6 @@ function setEmoticonSet( name ) {
 // Called every time a new chat message is added.
 
 function appendMessage( arr ) {
-  
   // Map array of arguments (from app) into something more useful.
   
   var args = {},
@@ -203,3 +205,70 @@ function showConnectionHintBox( network, server, nickname, realname ) {
 function hideConnectionHintBox() {
   // Not implemented in this style
 };
+
+// ========================================================================== //
+// Misc Debugging
+// ========================================================================== //
+
+var spam = (function(){
+  var timeout_id,
+    lipsum = [
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      'Mauris eu velit quis mi rutrum euismod.',
+      'Pellentesque vestibulum consequat elit nec congue.',
+      'Donec interdum feugiat mi eu tincidunt.',
+      'Proin ornare, tellus eget faucibus accumsan, est leo condimentum leo, quis gravida felis quam in purus.',
+      'Nam tempor laoreet pharetra.',
+      'Nullam vehicula ipsum non libero pellentesque posuere eu lobortis justo. Vivamus aliquet quam a velit egestas sit amet aliquet libero malesuada.',
+      'Fusce facilisis fringilla augue, sed suscipit leo cursus commodo.',
+      'Morbi vel turpis tellus, eget egestas dui.',
+      'Nunc bibendum mi sit amet tellus tempor eleifend.',
+      'Proin molestie tempus tristique.',
+      'Aliquam quam urna, pretium eget imperdiet sed, tincidunt vel augue.',
+      'Nunc in urna elit, a vehicula erat.',
+      'In hac habitasse platea dictumst. Cras fringilla, metus a ornare semper, est mi laoreet quam, at ornare tellus magna vitae metus.',
+      'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.'
+    ],
+    users = [
+      { name: 'ben_alman', color: '1', direction: 1 }
+    ];
+  
+  $.each('sample_user mr`awesome test123 not|afk'.split(' '),function(i,v){
+    users.push({
+      name: v,
+      color: i + 1,
+      direction: 0
+    })
+  });
+  
+  return function( delay ){
+    if ( timeout_id ) {
+      clearTimeout( timeout_id );
+      timeout_id = null;
+    } else {
+      timeout_id = -1;
+      
+      (function loopy(){
+        var user = users[ ~~( Math.random() * users.length ) ],
+          message = lipsum[ ~~( Math.random() * lipsum.length ) ],
+          d = new Date();
+        
+        appendMessage([
+          [ 'msgMessage', 'msgAction' ][ ~~( Math.random() * 2 ) ],
+          'LEB21C6AA-D386-49F0-AA38-66023A98ED60-9610-000007E8A35FA281',
+          user.name, message,
+          ( '0' + d.getHours() ).slice(-2) + ':' + ( '0' + d.getMinutes() ).slice(-2),
+          user.color, '', 1,
+          /\bipsum\b/i.test( message ) && user.direction === 0,
+          0, false, user.direction, '', '#macosx', '', false
+        ]);
+        
+        scrollToBottom();
+        
+        if ( timeout_id ) {
+          timeout_id = setTimeout( loopy, Math.random() * ( delay || 200 ) );
+        }
+      })();
+    }
+  }
+})();

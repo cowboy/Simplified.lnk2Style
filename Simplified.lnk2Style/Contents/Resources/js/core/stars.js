@@ -30,11 +30,11 @@ window.stars = (function(){
         id = p.attr( 'id' ),
         starred = p.hasClass( 'starred' );
       
-      window.linkinus && window.linkinus[ starred ? 'unstarPosts_' : 'starPosts_' ]( id );
+      window.linkinus && linkinus[ starred ? 'unstarPosts_' : 'starPosts_' ]( id );
       p.toggleClass( 'starred' ); // TODO: Make contingent on previous line success?
     })
-    .live('dblclick', function() {
-      window.getSelection().removeAllRanges();
+    .live( 'dblclick', function() {
+      getSelection().removeAllRanges();
     })
     .live( 'mouseover', function() {
       $(this).closest( 'p' ).addClass( 'star-hover' );
@@ -50,10 +50,10 @@ window.stars = (function(){
     $('span.context')
       .live( 'click', function() {
         var id = $(this).closest( 'p' ).attr( 'id' );
-        window.linkinus && window.linkinus.clickPost_( id );
+        window.linkinus && linkinus.clickPost_( id );
       })
       .live('dblclick', function() {
-        window.getSelection().removeAllRanges();
+        getSelection().removeAllRanges();
       });
     
   }

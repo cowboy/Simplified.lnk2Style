@@ -14,8 +14,7 @@
 // ========================================================================== //
 
 window.variant = (function(){
-  var self = {},
-    domready;
+  var self = {};
   
   // Set or change the style variant.
   
@@ -28,17 +27,13 @@ window.variant = (function(){
     
     debug.log( 'variant.setVariant', variant );
     
-    if ( domready ) {
+    if ( $.isReady ) {
       elem = $('#variant');
       elem.length ? elem.attr( 'href', href ) : $.$('head').append( html );
     } else {
       document.write( html );
     }
   };
-  
-  $(function(){
-    domready = true;
-  });
   
   return self;
 })();

@@ -18,7 +18,7 @@ window.scroller = (function(){
     ready,
     is_scrolling,
     scroll,
-    scroll_to_elem,
+    scroll_to_elem;
     
     // Disable if you don't like smooth scrolling.
     smooth_scrolling = SETTINGS.smooth_scrolling;
@@ -43,19 +43,31 @@ window.scroller = (function(){
     if ( force ) {
       // Forced.
       debug.log( 'scroller.scrollToBottom: forced' );
-      body.stop().scrollTop( y );
+      body.stop( true ).scrollTop( y );
       
     } else if ( is_scrolling || scroll <= 1 && ready ) {
       // Not forced, so only scroll to bottom if not manually scrolled up.
       debug.log( 'scroller.scrollToBottom: not forced', y );
       
       if ( smooth_scrolling ) {
+        body.stop( true, true );
+        
         is_scrolling = true;
-        body.stop().animate( { scrollTop: y }, 'fast', function(){
-          is_scrolling = false;
+        body.animate( { scrollTop: y }, {
+          duration: smooth_scrolling,
+          step: function( s, p ) {
+            if ( p.now - body.scrollTop() > 10 ) {
+                body.stop( true );
+                is_scrolling = false;
+            }
+          },
+          complete: function(){
+            is_scrolling = false;
+          }
         });
+        
       } else {
-        body.stop().scrollTop( y );
+        body.stop( true ).scrollTop( y );
       }
       
     } else {

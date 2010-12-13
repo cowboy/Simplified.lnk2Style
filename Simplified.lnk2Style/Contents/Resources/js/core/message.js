@@ -27,7 +27,7 @@ window.message = (function(){
   // Should messages be grouped?
   
   self.setGrouped = function( state ) {
-    grouped = state === false ? false : true;
+    grouped = !!state;
   };
   
   // Check to see if there are any past messages left, in order to change bg
@@ -85,7 +85,7 @@ window.message = (function(){
       
       smiley.isEnabled() ? 'emoticons' : 'noemoticons',
       !grouped ? 'ungrouped' : 'grouped grouped-' + ( !/^(?:highlights|stars)$/.test( CHATMODE )
-          && args.type === 'msgMessage' && args.nick === last_nick ? 'next' : ' first' ),
+          && args.type === 'msgMessage' && args.nick === last_nick ? 'next' : 'first' ),
       
       args.nick_userhost ? 'userhost' : '',
       args.nick_userhost && spotlight.isCurrent( args.nick_userhost ) ? 'spotlight' : '',

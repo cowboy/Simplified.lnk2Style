@@ -101,8 +101,8 @@ window.info = (function(){
     
     elem
       .dblclick(function() {
-        window.linkinus && window.linkinus.showInspector();
-        window.getSelection().removeAllRanges();
+        window.linkinus && linkinus.showInspector();
+        getSelection().removeAllRanges();
       })
       .mouseenter(function() {
         if ( pin_topic ) { return; }
