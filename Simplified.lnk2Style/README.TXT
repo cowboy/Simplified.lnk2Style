@@ -1,4 +1,4 @@
-Simplified: Linkinus 2.2 Style - v2.2 - 12/13/2010
+Simplified: Linkinus 2.2 Style - v2.2 - 12/22/2010
 http://benalman.com/projects/simplified-style/
 
 Copyright (c) 2010 "Cowboy" Ben Alman
