@@ -39,7 +39,9 @@ window.scroller = (function(){
   
   self.scrollToBottom = function( force ) {
     var body = $.$('body'),
-      y = body.attr( 'scrollHeight' ) - $.$(window,'window').height();
+      height = $.$(window,'window').height(),
+      y = body.attr( 'scrollHeight' ) - height,
+      threshold = 100; //height * 0.25;
     
     if ( force ) {
       // Forced.
@@ -57,7 +59,7 @@ window.scroller = (function(){
         body.animate( { scrollTop: y }, {
           duration: smooth_scrolling,
           step: function( s, p ) {
-            if ( p.now - body.scrollTop() > 10 ) {
+            if ( p.now - body.scrollTop() > threshold ) {
                 body.stop( true );
                 is_scrolling = false;
             }

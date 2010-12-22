@@ -165,7 +165,9 @@ p {
   border-top: 1px solid;
   border-bottom: 1px solid;
   position: relative;
-  -webkit-transition: 0.2s linear;
+  -webkit-transition-property: color, background-color, border;
+  -webkit-transition-duration: 0.2s;
+  -webkit-transition-timing-function: linear;
 }
 
 /* Links */

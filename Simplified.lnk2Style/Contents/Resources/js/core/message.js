@@ -126,7 +126,7 @@ window.message = (function(){
     }})
     
     // Handle embeds
-    args.embed && link_elems.oembed( null, { maxWidth: 300, maxHeight: 200 } ); // TOTALLY FIX THIS
+    // args.embed && link_elems.oembed( null, { maxWidth: 300, maxHeight: 200 } ); // TOTALLY FIX THIS
     
     // Fix indents.
     self.fixIndent( args.time, elem );

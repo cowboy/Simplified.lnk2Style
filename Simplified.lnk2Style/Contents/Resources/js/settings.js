@@ -20,7 +20,7 @@ var SETTINGS = {
   emoticon_set: 'Linkinus.AdiumEmoticonset',
   
   // Smaller is faster, bigger is slower. Set to false if you don't like smooth scrolling.
-  smooth_scrolling: 400,
+  smooth_scrolling: 200,
   
   // Enable if you want the topic bar to be always visible.
   pin_topic: false,

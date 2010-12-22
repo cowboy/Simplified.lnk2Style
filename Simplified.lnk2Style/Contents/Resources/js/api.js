@@ -49,17 +49,21 @@ function setSpotlightUserMessagesOnHoverEnabled( state ) {
 // Set font size.
 
 function setFontSize( size ) {
+  debug.log( arguments.callee.name );
   $('body').css( 'font-size', size + 'px' );
 };
 
 // When all initial chat messages and unfocus has been called, this is called.
 
 function setReady() {
+  debug.log( arguments.callee.name );
+  // Hacky-hacky for Linkinus 2.2 / iOS.
+  location.href = 'linkinus-style://styleDidFinishLoading';
+  
   scroller.setReady();
   overlay.setReady();
   
-  // Hacky-hacky for Linkinus 2.2 / iOS.
-  location.href = 'linkinus-style://styleDidFinishLoading';
+  //spam(); // Uncomment for scroll debugging.
 }
 
 // Update the topic. (Not in the app - yet?).
@@ -71,12 +75,14 @@ function setTopic( text ) {
 // Change style variant.
 
 function setVariant( name ) {
+  debug.log( arguments.callee.name );
   variant.setVariant( name );
 }
 
 // Change emoticonSet. (Not in the app - yet?).
 
 function setEmoticonSet( name ) {
+  debug.log( arguments.callee.name );
   smiley.loadAdiumEmoticonset( name );
 }
 
@@ -87,6 +93,7 @@ function setEmoticonSet( name ) {
 // Called every time a new chat message is added.
 
 function appendMessage( arr ) {
+  debug.log( arguments.callee.name );
   // Map array of arguments (from app) into something more useful.
   
   var args = {},
