@@ -2,7 +2,7 @@
  * Simplified: Linkinus 2.0 Style
  * http://benalman.com/projects/simplified-style/projects/simplified-style/
  * 
- * Copyright (c) 2010 "Cowboy" Ben Alman
+ * Copyright (c) 2011 "Cowboy" Ben Alman
  * Licensed under the MIT license
  * http://benalman.com/about/license/
  * 
