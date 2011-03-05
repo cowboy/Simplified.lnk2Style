@@ -8,6 +8,7 @@
 	<array>
 	    <string>Light</string>
 	    <string>Dark</string>
+	    <string>Stealth</string>
 	</array>
 </dict>
 </plist>

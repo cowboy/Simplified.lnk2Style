@@ -17,10 +17,12 @@
 window.message = (function(){
   var self = {},
     grouped,
+    indent_style,
     last_nick,
-    last_time_length,
+    last_time_width,
     grouped_next_indent,
     has_checked_history,
+    last_message;
     
     // Enable to show userhost on Join, Part and Quit.
     userhost_on_jpq = SETTINGS.userhost_on_jpq;
@@ -107,7 +109,7 @@ window.message = (function(){
     
     node.innerHTML = self.getChatHtml( args );
     
-    elem = $(node);
+    elem = last_message = $(node);
     
     // Append the newly created element.
     $.$( args.current ? '#content' : '#history' ).append( elem );
@@ -129,7 +131,7 @@ window.message = (function(){
     // args.embed && link_elems.oembed( null, { maxWidth: 300, maxHeight: 200 } ); // TOTALLY FIX THIS
     
     // Fix indents.
-    self.fixIndent( args.time, elem );
+    self.fixIndent();
   };
   
   // Construct and parse the HTML for a line of chat.
@@ -224,13 +226,12 @@ window.message = (function(){
   // since the last line) and adjust the margin and text-indent of the wrapper
   // div accordingly.
   
-  self.fixIndent = function( time, parent ) {
-    if ( time.length <= ( last_time_length || 0 ) ) { return; }
-    last_time_length = time.length;
+  self.fixIndent = function( parent ) {
+    parent = parent || last_message;
+    if ( !parent ) { return; }
     
     var elem = parent.find( 'span.time' ),
       test_elem,
-      style,
       w = 0,
       css;
     
@@ -246,38 +247,51 @@ window.message = (function(){
     }
     
     if ( elem.length ) {
-      w = elem.css( 'width','auto' ).outerWidth();
-      debug.log( 'timestamp width', w );
-      
-      css = ''
-        + '.time {'
-        + '  width: ' + elem.width() + 'px;'
-        + '}'
-        
-        + 'p > div {'
-        + '  text-indent: -' + w + 'px;'
-        + '  margin-left: ' + w + 'px;'
-        + '}'
-        
-        + 'p.grouped-next > div {'
-        + '  text-indent: -' + ( w + grouped_next_indent ) + 'px;'
-        + '  margin-left: ' + ( w + grouped_next_indent ) + 'px;'
-        + '}'
-        
-        + '';
-      
-      style = document.createElement( 'style' );
-      style.type = 'text/css';
-      style.id = 'timestamp-css';
-      style.innerText = css;
-      
-      $.$('head').append( style );
-      
-      elem.removeAttr( 'style' );
+      w = elem.css( 'width', 'auto' ).outerWidth();
+      if ( w > ( last_time_width || 0 ) ) {
+        last_time_width = w;
+        debug.log( 'timestamp width', w );
+
+        css = ''
+          + '.time {'
+          + '  width: ' + elem.width() + 'px;'
+          + '}'
+
+          + 'p > div {'
+          + '  text-indent: -' + w + 'px;'
+          + '  margin-left: ' + w + 'px;'
+          + '}'
+          
+          + 'p.grouped-next > div {'
+          + '  text-indent: -' + ( w + grouped_next_indent ) + 'px;'
+          + '  margin-left: ' + ( w + grouped_next_indent ) + 'px;'
+          + '}'
+
+          + '';
+
+        if ( !indent_style ) {
+          indent_style = document.createElement( 'style' );
+          indent_style.type = 'text/css';
+          indent_style.id = 'timestamp-css';
+          $.$('head').append( indent_style );
+        }
+
+        indent_style.innerText = css;
+        elem.removeAttr( 'style' );
+      }
     } else {
-      $('#timestamp-css').remove();
+      $(indent_style).remove();
     }
   }
+  
+  // Kluge to fix an issue when using @font-face. Because thefont is loaded
+  // async, its width can't be measured right away. Try every 50ms up to 1 sec
+  // after DOM ready to fix the indent.
+  $(function(){
+    for ( var i = 0; i < 1000; i += 50 ) {
+      setTimeout( self.fixIndent, i );
+    }
+  });
   
   // Show nickname / userhost (data-userhost attribute) on hover.
   

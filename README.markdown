@@ -24,6 +24,7 @@ Licensed under the MIT license
 
 ## Release History ##
 
-2.2 - (12/22/2010) Minor css tweaks and scrolling adjustments.
+2.2.1 - (3/5/2011) Reorganized project, added "Stealth" theme.  
+2.2 - (12/22/2010) Minor css tweaks and scrolling adjustments.  
 2.2 - (12/13/2010) Updates for Linkinus 2.2: minor app API change regression fixes, removed unnecessary 'window.' references, added 'spam()' method for chat debugging, made smooth scrolling over 9000 times faster  
 2.0 - (8/28/2009) Initial release
