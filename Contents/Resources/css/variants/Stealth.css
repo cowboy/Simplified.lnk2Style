@@ -155,7 +155,7 @@ body .msgKick .nick2 {
 
 .msgMessage.incoming .description,
 .msgAction.incoming .description {
-  color: #aaa;
+  color: #bbb;
 }
 
 .msgAction.outgoing .nick,
@@ -260,7 +260,7 @@ body .msgKick .nick2 {
 /* ========================================================================== */
 
 #body .context {
-  color: #aaa;
+  color: #bbb;
   background: #444;
   border-color: #666;
 }
