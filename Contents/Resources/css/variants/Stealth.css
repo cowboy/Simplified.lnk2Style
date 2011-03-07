@@ -263,6 +263,8 @@ body .msgKick .nick2 {
   color: #bbb;
   background: #444;
   border-color: #666;
+  line-height: 1.32em;
+  margin-top: 0.25em;
 }
 
 #body .context:hover {
