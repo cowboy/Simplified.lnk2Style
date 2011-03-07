@@ -1,7 +1,7 @@
 # Simplified: a Linkinus Style #
 <http://benalman.com/projects/simplified-style/>
 
-Version: 2.2.1, Last updated: 3/5/2011
+Version: 2.2.2pre
 
 * Minimum app version required: Linkinus 2.2
 * Embedded media support (not) coming soon!
@@ -12,8 +12,34 @@ Simplified is included with Linkinus 2.0.2 and newer, but updates will made avai
 
 Visit the [project page](http://benalman.com/projects/simplified-style/) for more information, including a features list and screenshots!
 
-If you like this theme, please consider donating!
-<http://benalman.com/donate>
+If you like this theme, [please consider donating](http://benalman.com/donate)!
+
+## Installation ##
+
+There are two basic ways to install the latest version of Simplified:
+
+### Non-hacker version ###
+
+ 1. Click the big "Download" button at the top of the page.
+ 2. Click the "Download .zip" button.
+ 3. Unzip the `cowboy-Simplified.lnk2Style-wholebunchofstuff.zip` file and rename the resulting folder to `Simplified.lnk2Style`.
+ 4. Double-click the `Simplified.lnk2Style` bundle to install it into Linkinus.
+ 5. At this point, you might need to restart Linkinus to see the new changes.
+
+### Hacker version ###
+
+If you have [git](http://code.google.com/p/git-osx-installer/) installed, you can run these commands in the terminal, then restart Linkinus to see the changes.
+ 
+    cd ~/Library/Application\ Support/Linkinus\ 2/Styles
+    mv Simplified.lnk2Style Simplified.lnk2Style~
+    git clone git://github.com/cowboy/Simplified.lnk2Style.git
+
+
+## Contributing ##
+
+If you want your variant to be included in the official release of Simplified, please fork this repo, add your variant (and modify Variants.plist), and issue a pull request. If your new variant is awesome, it will be included!
+
+_Note: If your new variant modifies any existing files (style.css, for example), your pull request will be ignored--unless you have a really good reason and can show that none of the existing variants are affected._
 
 
 ## License ##
